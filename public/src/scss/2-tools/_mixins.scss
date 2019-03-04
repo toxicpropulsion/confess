@@ -1,0 +1,63 @@
+//
+// Mixins
+// --------------------------------------------------
+
+// Placeholder text
+@mixin placeholder($color: $input-color-placeholder) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin flex($direction: column, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Font smoothing
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin roboto-condensed(
+  $style: normal,
+  $size: 1rem,
+  $color: $brand-black,
+  $weight: 400
+) {
+  font-family: $font-roboto-condesed;
+  font-style: $style;
+  font-weight: $weight;
+  font-size: $size;
+  color: $color;
+}
+@mixin transition($to: all, $time: 600ms, $f: ease) {
+  transition: $to $time $f;
+}
+// Unstyled list
+@mixin list-unstyled {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+// Provides an easy way to include a clearfix for containing floats.
+@mixin clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}

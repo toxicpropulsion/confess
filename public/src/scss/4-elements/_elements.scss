@@ -1,0 +1,26 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  @include font-smoothing();
+  @include transition();
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  @include roboto-condensed();
+}
+
+input[type="text"],
+textarea {
+  @include roboto-condensed();
+  @include placeholder();
+}
+
+ul,
+ol {
+  @include list-unstyled();
+}

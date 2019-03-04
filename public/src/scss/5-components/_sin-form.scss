@@ -1,0 +1,39 @@
+.sin-form {
+  margin-top: 6em;
+
+  form {
+    @include flex();
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 8px;
+      background-color: $background-color-1;
+      border: 1px solid $border-color;
+      border-radius: 6px;
+      resize: none;
+    }
+  }
+
+  .sin-form__controls {
+    width: 100%;
+    margin-top: 2em;
+    @include flex(row, space-around);
+
+    button {
+      background-color: $background-color-3;
+      opacity: 0.5;
+      border: 1px solid $border-color;
+      border-radius: 2px;
+      padding: 8px 12px;
+      @include transition(all, 200ms);
+
+      &:hover,
+      &:focus,
+      &:active {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
+}
