@@ -8,8 +8,6 @@ module.exports.indexGetHandler = function(req, res) {
 };
 
 module.exports.indexPostHandler = function(req, res) {
-  console.log("POST:", req.body);
-
   const sin = new Sin();
 
   sin.content = req.body.text;
