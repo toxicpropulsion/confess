@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const sinSchema = new mongoose.Schema({
   content: String,
-  language: String,
   date: { type: Date, default: Date.now }
 });
 
