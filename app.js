@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
 const session = require("express-session");
+const indexRouter = require("./routes/index");
+const { requestLogger, consoleLogger } = require("./modules/logger");
 
 require("dotenv").load();
 
@@ -25,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(expressValidator());
 app.use(cookieParser());
+app.use(requestLogger);
+app.use(consoleLogger);
 
 app.use(
   session({
@@ -35,8 +39,6 @@ app.use(
 );
 
 // routes
-const indexRouter = require("./routes/index");
-
 app.use("/", indexRouter);
 
 // catch 404 and forward to error handler

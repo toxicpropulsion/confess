@@ -12,18 +12,14 @@
   "dependencies": {
     "body-parser": "*",
     "cookie-parser": "~1.4.3",
-    "css-loader": "^2.1.0",
     "dotenv": "^6.2.0",
     "express": "latest",
     "express-session": "^1.15.1",
     "express-validator": "^3.1.2",
-    "mini-css-extract-plugin": "^0.5.0",
     "mongoose": "^4.8.6",
-    "node-sass": "^4.11.0",
-    "postcss-loader": "^3.0.0",
+    "morgan": "^1.9.1",
     "pug": "^2.0.3",
-    "sass-loader": "^7.1.0",
-    "winston": "^3.1.0"
+    "rotating-file-stream": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
