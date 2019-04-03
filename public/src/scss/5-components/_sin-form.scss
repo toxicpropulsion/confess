@@ -3,6 +3,10 @@
 
   form {
     @include flex();
+  }
+
+  .sin-form__textarea {
+    width: 100%;
 
     textarea {
       width: 100%;
@@ -17,8 +21,8 @@
 
   .sin-form__controls {
     width: 100%;
-    margin-top: 2em;
-    @include flex(row, space-around);
+    margin-top: 1.3em;
+    @include flex(row, center);
 
     button {
       background-color: $background-color-3;
@@ -26,6 +30,7 @@
       border: 1px solid $border-color;
       border-radius: 2px;
       padding: 8px 12px;
+      margin: 0 16px;
       @include transition(all, 200ms);
 
       &:hover,
