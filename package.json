@@ -7,7 +7,7 @@
     "start": "node ./bin/www",
     "test": "mocha --recursive",
     "build": "webpack",
-    "building": "webpack --watch"
+    "build-w": "webpack --watch"
   },
   "dependencies": {
     "body-parser": "*",
