@@ -1,18 +1,30 @@
-import makeFetchRequest from "./fetch";
+import postSin from "./fetch";
 
 export default function onSinFormSubmit(event) {
   event.preventDefault();
 
+  const nodeName = event.target.nodeName;
+
+  if (nodeName != "BUTTON") return;
+
+  const form = event.target.form;
+  const sinText = form.elements["sinText"];
+  const target = event.target.id;
+
   const body = {};
 
-  let sinText = sinForm.elements["sinText"];
-  let target = event.target.id;
-
-  if (target === "forgiveBtn") {
-    body["action"] = "forgive";
-    body["text"] = sinText.value;
-    makeFetchRequest("POST", body).then(res => {
-      console.log(res);
-    });
+  switch (target) {
+    case "forgiveBtn":
+      body["action"] = "forgive";
+      body["text"] = sinText.value;
+      postSin("POST", body).then(res => {
+        console.log(res);
+      });
+      break;
+    case "nextSin":
+      console.log("next");
+      break;
+    default:
+      console.error("Unexpected submit event");
   }
 }

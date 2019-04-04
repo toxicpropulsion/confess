@@ -1,4 +1,4 @@
-export default function makeFetchRequest(method, body) {
+export default function postSin(method, body) {
   return fetch("/", {
     method: method,
     body: JSON.stringify(body),
