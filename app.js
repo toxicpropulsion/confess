@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
 const session = require("express-session");
 const indexRouter = require("./routes/index");
-const { requestLogger, consoleLogger } = require("./modules/logger");
+const { requestLogger, consoleLogger } = require("./lib/logger");
 
 require("dotenv").load();
 
