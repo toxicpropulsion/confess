@@ -1,6 +1,10 @@
-import postSin from "./fetch";
+import { postSin, getSin } from "./request";
 
-export default function onSinFormSubmit(event) {
+export function onDOMContentLoaded() {
+  console.log("onDOMContentLoaded");
+}
+
+export function onSinFormSubmit(event) {
   event.preventDefault();
 
   const nodeName = event.target.nodeName;
@@ -8,21 +12,22 @@ export default function onSinFormSubmit(event) {
   if (nodeName != "BUTTON") return;
 
   const form = event.target.form;
-  const sinText = form.elements["sinText"];
+  const textarea = form.elements["sinText"];
   const target = event.target.id;
 
   const body = {};
 
   switch (target) {
     case "forgiveBtn":
-      body["action"] = "forgive";
-      body["text"] = sinText.value;
-      postSin("POST", body).then(res => {
+      body["content"] = textarea.value;
+      postSin(body).then(res => {
         console.log(res);
       });
       break;
     case "nextSin":
-      console.log("next");
+      getSin().then(sin => {
+        textarea.placeholder = sin.content;
+      });
       break;
     default:
       console.error("Unexpected submit event");

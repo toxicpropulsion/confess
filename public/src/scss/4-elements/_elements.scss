@@ -17,7 +17,7 @@ body {
 input[type="text"],
 textarea {
   @include roboto-condensed();
-  @include placeholder();
+  @include placeholder($brand-black, 0.7);
 }
 
 ul,

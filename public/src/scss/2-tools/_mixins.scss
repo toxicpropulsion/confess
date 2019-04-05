@@ -3,19 +3,21 @@
 // --------------------------------------------------
 
 // Placeholder text
-@mixin placeholder($color: $input-color-placeholder) {
+@mixin placeholder($color: $input-color-placeholder, $opacity: 1) {
   // Firefox
   &::-moz-placeholder {
     color: $color;
-    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+    opacity: $opacity;
   }
   // Internet Explorer 10+
   &:-ms-input-placeholder {
     color: $color;
+    opacity: $opacity;
   }
   // Safari and Chrome
   &::-webkit-input-placeholder {
     color: $color;
+    opacity: $opacity;
   }
 }
 
