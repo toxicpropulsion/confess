@@ -1,5 +1,5 @@
 import { postSin, getSin } from "./request";
-import { textareaIsEmpty, clearTextarea } from "./utils";
+import { textareaIsEmpty, clearTextarea, switchForgiveBtnState } from "./utils";
 
 export function onDOMContentLoaded() {
   getSin().then(sin => {
@@ -29,6 +29,8 @@ export function onSinFormSubmit(event) {
       body["content"] = textarea.value;
       postSin(body).then(res => {
         console.log(res);
+        clearTextarea(textarea);
+        switchForgiveBtnState();
       });
       break;
     case "nextSin":
@@ -39,5 +41,18 @@ export function onSinFormSubmit(event) {
       break;
     default:
       console.error("Unexpected submit event");
+  }
+}
+
+export function onTextareaChange(event) {
+  const btn = document.getElementById("forgiveBtn");
+  const disabled = btn.classList.contains("disabled");
+  const len = event.target.value.length;
+
+  if (len <= 0 && !disabled) {
+    btn.classList.add("disabled");
+  }
+  if (len > 0 && disabled) {
+    btn.classList.remove("disabled");
   }
 }

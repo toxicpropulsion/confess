@@ -5,3 +5,13 @@ export function textareaIsEmpty(textarea) {
 export function clearTextarea(textarea) {
   textarea.value = "";
 }
+
+export function switchForgiveBtnState() {
+  const btn = document.getElementById("forgiveBtn");
+  const disabled = btn.classList.contains("disabled");
+  if (disabled) {
+    btn.classList.remove("disabled");
+  } else {
+    btn.classList.add("disabled");
+  }
+}
