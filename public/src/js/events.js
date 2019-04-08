@@ -1,7 +1,10 @@
 import { postSin, getSin } from "./request";
+import { textareaIsEmpty, clearTextarea } from "./utils";
 
 export function onDOMContentLoaded() {
-  console.log("onDOMContentLoaded");
+  getSin().then(sin => {
+    document.getElementById("sinText").placeholder = sin.content;
+  });
 }
 
 export function onSinFormSubmit(event) {
@@ -19,12 +22,17 @@ export function onSinFormSubmit(event) {
 
   switch (target) {
     case "forgiveBtn":
+      if (textareaIsEmpty(textarea)) {
+        console.error("Textarea is empty");
+        return false;
+      }
       body["content"] = textarea.value;
       postSin(body).then(res => {
         console.log(res);
       });
       break;
     case "nextSin":
+      clearTextarea(textarea);
       getSin().then(sin => {
         textarea.placeholder = sin.content;
       });
