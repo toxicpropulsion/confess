@@ -1,7 +1,7 @@
 {
-  "name": "forgiveme",
+  "name": "confess",
   "version": "1.0.0",
-  "description": "A website for your sins",
+  "description": "A website to confess your sins",
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
