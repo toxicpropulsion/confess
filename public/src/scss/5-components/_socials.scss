@@ -1,0 +1,20 @@
+.socials {
+  margin: 0;
+  padding: 0;
+  @include flex(row);
+
+  li {
+    margin: 0 6px;
+
+    a {
+      color: $brand-black;
+      opacity: 0.8;
+      font-size: 0.7rem;
+
+      &:hover {
+        color: $brand-blue;
+        transition-duration: 0.1s;
+      }
+    }
+  }
+}
