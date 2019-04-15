@@ -1,0 +1,27 @@
+.popup {
+  &#popup-ok {
+    background-color: $brand-blue;
+  }
+
+  &#popup-error {
+    background-color: $brand-red;
+  }
+
+  color: $brand-white;
+  @include flex();
+  width: 20rem;
+  height: 10rem;
+  font-size: 1.2rem;
+  position: absolute;
+  left: calc(50% - 10rem);
+  top: -15rem;
+  box-shadow: 0 1px 3px rgba(42, 49, 59, 0.12), 0 1px 2px rgba(42, 49, 59, 0.24);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-weight: bold;
+  padding: 1rem;
+  text-align: center;
+
+  &.show {
+    top: 40vh;
+  }
+}

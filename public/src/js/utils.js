@@ -15,3 +15,11 @@ export function switchForgiveBtnState() {
     btn.classList.add("disabled");
   }
 }
+
+export function togglePopup(id, timeout = 3000) {
+  const popup = document.getElementById(id);
+  popup.classList.add("show");
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, timeout);
+}

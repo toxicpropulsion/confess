@@ -37,9 +37,7 @@
       color: $background-color-2;
       @include transition(all, 100ms);
 
-      &:hover,
-      &:focus,
-      &:active {
+      &:hover {
         opacity: 0.8;
         cursor: pointer;
       }

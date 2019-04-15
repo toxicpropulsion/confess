@@ -1,5 +1,10 @@
 import { postSin, getSin } from "./request";
-import { textareaIsEmpty, clearTextarea, switchForgiveBtnState } from "./utils";
+import {
+  textareaIsEmpty,
+  clearTextarea,
+  switchForgiveBtnState,
+  togglePopup
+} from "./utils";
 
 export function onDOMContentLoaded() {
   getSin().then(sin => {
@@ -27,16 +32,28 @@ export function onSinFormSubmit(event) {
         return false;
       }
       body["content"] = textarea.value;
-      postSin(body).then(res => {
-        console.log(res);
-        clearTextarea(textarea);
-        switchForgiveBtnState();
-      });
+      postSin(body)
+        .then(res => {
+          if (res.status === 1) {
+            togglePopup("popup", 3500);
+            clearTextarea(textarea);
+            switchForgiveBtnState();
+          } else {
+            console.error(res.error);
+            togglePopup("popup-error", 4500);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          togglePopup("popup-error", 4500);
+        });
       break;
     case "nextSin":
       clearTextarea(textarea);
       getSin().then(sin => {
         textarea.placeholder = sin.content;
+      }).catch(err => {
+        console.error(err);
       });
       break;
     default:
