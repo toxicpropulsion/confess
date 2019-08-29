@@ -15,7 +15,7 @@ require("dotenv").load();
 const { NODE_ENV, MONGO_DB_URI, SESSION_KEY } = process.env;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_DB_URI, { useMongoClient: true });
+mongoose.connect(MONGO_DB_URI, { useNewUrlParser: true });
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
