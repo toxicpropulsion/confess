@@ -1,8 +1,4 @@
-import {
-  onDOMContentLoaded,
-  onSinFormSubmit,
-  onTextareaChange
-} from "./events";
+import { onDOMContentLoaded, onSinFormSubmit, onTextareaChange } from "./events";
 
 const sinForm = document.getElementById("sinForm");
 const sinText = document.getElementById("sinText");

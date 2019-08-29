@@ -1,5 +1,5 @@
 export function textareaIsEmpty(textarea) {
-  return textarea.value.length ? false : true;
+  return textarea.value.length <= 0;
 }
 
 export function clearTextarea(textarea) {

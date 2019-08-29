@@ -1,10 +1,5 @@
 import { postSin, getSin } from "./request";
-import {
-  textareaIsEmpty,
-  clearTextarea,
-  switchForgiveBtnState,
-  togglePopup
-} from "./utils";
+import { textareaIsEmpty, clearTextarea, switchForgiveBtnState, togglePopup } from "./utils";
 
 export function onDOMContentLoaded() {
   getSin().then(sin => {
@@ -15,36 +10,33 @@ export function onDOMContentLoaded() {
 export function onSinFormSubmit(event) {
   event.preventDefault();
 
-  const nodeName = event.target.nodeName;
+  const { nodeName } = event.target;
 
-  if (nodeName != "BUTTON") return;
+  if (nodeName !== "BUTTON") return;
 
-  const form = event.target.form;
-  const textarea = form.elements["sinText"];
-  const target = event.target.id;
+  const { id: target, form } = event.target;
+  const textarea = form.elements.sinText;
 
   const body = {};
 
   switch (target) {
     case "forgiveBtn":
       if (textareaIsEmpty(textarea)) {
-        console.error("Textarea is empty");
-        return false;
+        break;
       }
-      body["content"] = textarea.value;
+      body.content = textarea.value;
       postSin(body)
         .then(res => {
           if (res.status === 1) {
-            togglePopup("popup", 3500);
+            togglePopup("popup-ok", 3500);
             clearTextarea(textarea);
             switchForgiveBtnState();
           } else {
-            console.error(res.error);
             togglePopup("popup-error", 4500);
           }
         })
         .catch(err => {
-          console.error(err);
+          console.log(err);
           togglePopup("popup-error", 4500);
         });
       break;
@@ -52,12 +44,9 @@ export function onSinFormSubmit(event) {
       clearTextarea(textarea);
       getSin().then(sin => {
         textarea.placeholder = sin.content;
-      }).catch(err => {
-        console.error(err);
       });
       break;
     default:
-      console.error("Unexpected submit event");
   }
 }
 
