@@ -1,6 +1,6 @@
 const Sin = require("../models/sin");
 
-exports.getRandomSin = (req, res, next) => {
+exports.getRandomSin = (req, res) => {
   Sin.getRandomSin((err, data) => {
     if (err) {
       res.status(500).json({
@@ -9,6 +9,12 @@ exports.getRandomSin = (req, res, next) => {
       });
     }
     const sin = data[0];
+
+    if (!sin) {
+      res.status(404).end();
+      return;
+    }
+
     res.status(200).json({
       status: 1,
       content: sin.content,
@@ -17,12 +23,12 @@ exports.getRandomSin = (req, res, next) => {
   });
 };
 
-exports.createSin = (req, res, next) => {
+exports.createSin = (req, res) => {
   const sin = new Sin();
   sin.content = req.body.content;
   sin.save(err => {
     if (err) {
-      console.error(error);
+      console.error(err);
       res.status(500).json({
         status: 0,
         error: err
